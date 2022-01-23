@@ -1,0 +1,93 @@
+from turtle import Shape
+import math
+
+class Shapes():
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+        return ("<" + self.__class__.__name__ + " x = " + str(self.x) + " y = " + str(self.y) + ">")
+    
+class Circle(Shapes):
+    def __init__(self, x, y, radius):
+        super().__init__(x, y)
+        self.radius = radius
+
+    def __repr__(self):
+        return ("<" + self.__class__.__name__ + " x = " + str(self.x) + " y = " + str(self.y) + " radius = " + str(self.radius) + ">")
+
+    def area(self):
+        return math.pi * math.sqrt(self.radius)
+
+    def circumference(self):
+        return (self.radius*2)*math.pi
+
+class Rectangle(Shapes):
+    def __init__(self, x, y):
+        super().__init__(x, y)
+        self.length = x
+        self.width = y
+
+    def __repr__(self):
+        return ("<" + self.__class__.__name__ + " height = " + str(self.x) + " width = " + str(self.y) +">")
+
+    def area(self):
+        return self.length * self.width
+
+    def circumference(self):
+        return (self.length + self.width)*2
+
+class Square(Rectangle):
+    def __repr__(self):
+        return ("<" + self.__class__.__name__ + " height = " + str(self.x) + " width = " + str(self.y) +">")
+
+
+class RightTriangle(Shapes):
+    def __init__(self, x, y, z):
+        super().__init__(x, y)
+        self.height = x
+        self.width = y
+        self.z = z
+
+    def __repr__(self):
+        return ("<" + self.__class__.__name__ + " x = " + str(self.x) + " y = " + str(self.y) + " z = " + str(self.z) + ">")
+
+    def area(self):
+        return (1/2)*self.x  * self.y
+
+    def circumference(self):
+        return self.x + self.y + self.z
+
+print("")
+print("Shapes file:", Shapes(20, 35))
+print("")
+
+#Circle
+print("Circle file:", Circle(5, 10, 70))
+circle = Circle(5, 10, 70)
+print("Circle area: ",circle.area())
+print("Circle circumference: ", circle.circumference())
+print("")
+
+#Rectangle
+print("Rectangle file:", Rectangle(5, 10))
+rect = Rectangle(5, 10)
+print("Rectangle area: ",rect.area())
+print("Rectangle circumference: ", rect.circumference())
+print("")
+
+#Square
+print("Square file:", Square(10, 10))
+sqr = Rectangle(10, 10)
+print("Square area: ", sqr.area())
+print("Square circumference: ", sqr.circumference())
+print("")
+
+print("")
+#Right Triangle
+print("Right Triangle file:", RightTriangle(20, 10, 9))
+RT = RightTriangle(20, 10, 9)
+print("Right Triangle area: ", RT.area())
+print("Right Trianlge circumference: ", RT.circumference())
+print("")
