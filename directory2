@@ -1,10 +1,38 @@
-- 👋 Hi, I’m @Challa9
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
+from Database2 import Simpledb
+import sys
 
-<!---
-Challa9/Challa9 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+commands = ["a", "f", "d", "u", "q"]
+inputs = input("Command or (q) to quit: ")
+inputs.lower()
+quit = False
+while quit == False:
+    if inputs == "a":
+        name_input = input("Name: ")
+        num_input = input("Number: ")
+        db = Simpledb("recipes.txt")
+        db.insert(name_input, num_input)
+
+    if inputs == "f":
+        find_name = input("Name to Find: ")
+        db = Simpledb("recipes.txt")
+        db.select_one(find_name)
+
+
+    if inputs == "d":
+        del_name = input("Name to delete: ")
+        db = Simpledb("recipes.txt")
+        db.delete(del_name)
+    
+    if inputs == "u":
+        update_name = input("Name to Update: ")
+        new_number = input("New Number: ")
+        
+        db = Simpledb("recipes.txt")
+        db.update(update_name, new_number)
+
+
+    if inputs == "q":
+        sys.exit()
+    inputs = input("Command or (q) to quit: ")
+
+#THE DELETE FUNCTION IS NOT WORKING PROPPERLY, IT DELETES EVERYTHING AND PRINTS "NAME NOT FOUND"
